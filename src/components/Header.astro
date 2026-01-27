@@ -1,0 +1,119 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Contact', href: '/contact' },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <nav class="container-custom">
+    <div class="flex items-center justify-between h-24 md:h-28">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3">
+        <img src="/logo.png" alt="Glove Affairs Logo" class="h-20 md:h-24 w-auto" />
+        <span class="text-xl md:text-2xl font-bold text-leather-800">Glove Affairs</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`text-base font-medium transition-colors ${
+                currentPath === item.href
+                  ? 'text-leather-700 border-b-2 border-leather-700'
+                  : 'text-gray-700 hover:text-leather-700'
+              }`}
+            >
+              {item.name}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-leather-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-leather-500"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        <!-- Icon: menu (hamburger) -->
+        <svg
+          id="menu-open-icon"
+          class="block h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <!-- Icon: close (X) -->
+        <svg
+          id="menu-close-icon"
+          class="hidden h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col space-y-3">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                currentPath === item.href
+                  ? 'text-leather-700 bg-leather-50'
+                  : 'text-gray-700 hover:text-leather-700 hover:bg-gray-50'
+              }`}
+            >
+              {item.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpenIcon = document.getElementById('menu-open-icon');
+  const menuCloseIcon = document.getElementById('menu-close-icon');
+
+  menuButton?.addEventListener('click', () => {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('hidden');
+    menuOpenIcon?.classList.toggle('hidden');
+    menuCloseIcon?.classList.toggle('hidden');
+  });
+</script>

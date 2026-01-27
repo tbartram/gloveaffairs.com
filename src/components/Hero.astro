@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
+}
+
+const { title, subtitle, ctaText, ctaLink, secondaryCtaText, secondaryCtaLink } = Astro.props;
+---
+
+<section class="relative bg-gradient-to-br from-leather-50 via-white to-baseball-50 section-padding">
+  <div class="container-custom">
+    <div class="text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        {title}
+      </h1>
+      
+      {subtitle && (
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+          {subtitle}
+        </p>
+      )}
+      
+      {(ctaText || secondaryCtaText) && (
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+          {ctaText && ctaLink && (
+            <a href={ctaLink} class="btn-primary">
+              {ctaText}
+            </a>
+          )}
+          {secondaryCtaText && secondaryCtaLink && (
+            <a href={secondaryCtaLink} class="btn-secondary">
+              {secondaryCtaText}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

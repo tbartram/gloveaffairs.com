@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Cleaning & Conditioning',
+    description: 'Deep cleaning removes years of dirt, sweat, and grime. We follow up with premium leather conditioning to restore suppleness and prevent cracking. Your glove will look and feel rejuvenated.',
+    icon: '🧼',
+  },
+  {
+    title: 'Palm Adhesive Replacement',
+    description: 'Over time, adhesives break down. We remove old materials and install fresh proper adhesive, restoring the pocket and improving feel.',
+    icon: '✋',
+  },
+  {
+    title: 'Leather Dying',
+    description: 'Restore faded leather to its original color or completely change your glove\'s appearance. We use professional-grade leather dyes for long-lasting, even results.',
+    icon: '🎨',
+  },
+  {
+    title: 'Repairs & Patching',
+    description: 'Don\'t throw away a glove with a tear or hole. We an help repair damaged leather, maintaining structural integrity while preserving the glove\'s character.',
+    icon: '🔧',
+  },
+  {
+    title: 'Complete Relacing',
+    description: 'Broken or frayed laces compromise your glove\'s performance. We relace with high-quality leather lace, matching original patterns or customizing to your specifications.',
+    icon: '🧵',
+  },
+  {
+    title: 'Custom Modifications',
+    description: 'Want to personalize your glove? We can modify the web style, and change colors to suit your preferences.',
+    icon: '⚾',
+  },
+  {
+    title: 'Complete Restoration',
+    description: 'Full-service restoration package includes cleaning, conditioning, relacing, repairs, and finishing. Perfect for vintage gloves or heavily used favorites.',
+    icon: '✨',
+  },
+  {
+    title: 'Maintenance & Touch-ups',
+    description: 'Keep your glove in top shape with regular maintenance. Quick conditioning, minor lace repairs, and touch-up services to extend your glove\'s life.',
+    icon: '🛠️',
+  },
+];
+---
+
+<Layout
+  title="Services"
+  description="Comprehensive baseball glove restoration services including cleaning, conditioning, relacing, repairs, dyeing, and more."
+>
+  <Header />
+  
+  <Hero
+    title="Professional Glove Restoration Services"
+    subtitle="From basic cleaning to complete restoration, we offer comprehensive services to bring your baseball glove back to life."
+  />
+
+  <!-- Services Grid -->
+  <section class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing CTA -->
+  <section class="section-padding bg-leather-800 text-white">
+    <div class="container-custom">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          Get a Quote for Your Restoration
+        </h2>
+        <p class="text-xl mb-8 text-leather-100">
+          Every glove is unique, and so is every restoration. Contact us through Instagram for a personalized quote based on your glove's specific needs.
+        </p>
+        <a
+          href="https://instagram.com/gloveaffairs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-8 py-4 bg-white text-base font-medium rounded-md text-leather-800 hover:bg-leather-100 transition-colors"
+        >
+          <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Message Us on Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

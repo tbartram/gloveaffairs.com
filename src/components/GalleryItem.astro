@@ -1,0 +1,52 @@
+---
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  title: string;
+  services?: string;
+  commentary?: string;
+}
+
+const { beforeImage, afterImage, title, services, commentary } = Astro.props;
+---
+
+<div class="group relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all">
+  <div class="grid grid-cols-2 gap-0">
+    <!-- Before Image -->
+    <div class="relative aspect-square overflow-hidden">
+      <img
+        src={beforeImage}
+        alt={`${title} - Before`}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute top-2 left-2 bg-black bg-opacity-70 text-white text-xs font-semibold px-2 py-1 rounded">
+        Before
+      </div>
+    </div>
+    
+    <!-- After Image -->
+    <div class="relative aspect-square overflow-hidden">
+      <img
+        src={afterImage}
+        alt={`${title} - After`}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute top-2 right-2 bg-leather-700 bg-opacity-90 text-white text-xs font-semibold px-2 py-1 rounded">
+        After
+      </div>
+    </div>
+  </div>
+  
+  <!-- Caption -->
+  <div class="p-4">
+    <h3 class="font-semibold text-gray-900 mb-2">{title}</h3>
+    {services && (
+      <p class="text-xs text-gray-500 mb-2 font-medium">{services}</p>
+    )}
+    {commentary && (
+      <p class="text-sm text-gray-700 italic">{commentary}</p>
+    )}
+  </div>
+</div>

@@ -33,14 +33,33 @@ const featuredServices = [
   <Header />
   
   <!-- Hero Section -->
-  <Hero
-    title="Keeping Your Glove in the Game"
-    subtitle="Baseball and softball glove restoration services. Clean, condition, customize, relace, repair. Bring your favourite gloves back to life."
-    ctaText="View Our Services"
-    ctaLink="/services"
-    secondaryCtaText="See Our Work"
-    secondaryCtaLink="/gallery"
-  />
+  <section class="relative bg-gradient-to-br from-leather-50 via-white to-baseball-50 pt-8 pb-16 md:pt-12 md:pb-24">
+    <div class="container-custom">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Logo in Hero -->
+        <div class="mb-8 flex justify-center">
+          <img src="/logo.png" alt="Glove Affairs Logo" class="h-32 md:h-40 lg:h-48 w-auto drop-shadow-lg" />
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Keeping Your Glove in the Game
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+          Baseball and softball glove restoration services. Clean, condition, customize, relace, repair. Bring your favourite gloves back to life.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+          <a href="/services" class="btn-primary">
+            View Our Services
+          </a>
+          <a href="/gallery" class="btn-secondary">
+            See Our Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- About Section -->
   <section class="section-padding bg-white">
